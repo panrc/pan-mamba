@@ -1,0 +1,6 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+在dataset文件夹里面有wv3的数据集，dataset/full_examples里面的是全分辨率的h5文件，dataset/full_examples(1)里面是全分辨率的mat文件，dataset/reduced_examples里面的是降分辨率的h5文件，dataset/reduced_examples(1)里面的是降分辨率的mat文件，我希望你用这个工程的权重帮我跑一下wv3的结果
