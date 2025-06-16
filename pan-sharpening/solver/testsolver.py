@@ -8,6 +8,7 @@ LastEditTime: 2021-01-19 21:00:18
 '''
 from solver.basesolver import BaseSolver
 import os, torch, time, cv2, importlib, scipy.io
+from torch.cuda.amp import autocast
 import torch.backends.cudnn as cudnn
 from data.data import *
 from torch.utils.data import DataLoader
@@ -99,7 +100,8 @@ class Testsolver(BaseSolver):
             #     continue
             t0 = time.time()
             with torch.no_grad():
-                prediction = self.model(lms_image, bms_image, pan_image)
+                with autocast():
+                    prediction = self.model(lms_image, bms_image, pan_image)
                 
             # exit(0)
             t1 = time.time()
@@ -128,7 +130,8 @@ class Testsolver(BaseSolver):
 
             t0 = time.time()
             with torch.no_grad():
-                prediction,_,_ = self.model(lms_image, bms_image, pan_image)
+                with autocast():
+                    prediction,_,_ = self.model(lms_image, bms_image, pan_image)
 
             t1 = time.time()
 
